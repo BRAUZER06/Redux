@@ -6,7 +6,7 @@ import { Item } from "./components/Item";
 function App() {
   const [valueInput, setValueInput] = React.useState("");
   const [box, setBox] = React.useState(false);
-  const [completedCheck, setcompletedCheck] = React.useState(true);
+  const [completedCheck, setCompletedCheck] = React.useState(true);
   const [state, dispatch] = React.useReducer(reducer, [
     {
       id: 1,
@@ -22,20 +22,17 @@ function App() {
   console.log(valueInput);
   function reducer(state, action) {
     if (action.type === "ADD_TASK") {
-      
       return [
         ...state,
         {
-          id: state.length ? state[[...state].length - 1].id + 1 : 0,
+          id: state.length ? state[state.length - 1].id + 1 : 0,
           text: valueInput,
           completed: box,
         },
       ];
-      
     }
     if (action.type === "CLEAR_STATE") {
-      setValueInput('')
-      return (state = []);
+      return [];
     }
     if (action.type === "MARK_COMPLETED") {
       return state.map((e) => ({
@@ -43,7 +40,7 @@ function App() {
         completed: action.payload,
       }));
     }
-    
+
     return state;
   }
 
@@ -51,13 +48,10 @@ function App() {
     dispatch({
       type: "ADD_TASK",
     });
-    
-    
   };
 
   const onChangeInput = (e) => {
     setValueInput(e.target.value);
-    
   };
 
   const onChangeBox = (e) => {
@@ -71,7 +65,7 @@ function App() {
     });
   };
   const markCompleted = () => {
-    setcompletedCheck((prev) => !prev);
+    setCompletedCheck((prev) => !prev);
     dispatch({
       type: "MARK_COMPLETED",
       payload: completedCheck,
