@@ -19,7 +19,7 @@ function App() {
       completed: true,
     },
   ]);
-  console.log(valueInput);
+
   function reducer(state, action) {
     if (action.type === "ADD_TASK") {
       return [
@@ -56,7 +56,6 @@ function App() {
 
   const onChangeBox = (e) => {
     setBox(e.target.checked);
-    console.log(box);
   };
 
   const clearState = () => {
