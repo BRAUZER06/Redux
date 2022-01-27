@@ -11,7 +11,7 @@ function App() {
         ...state,
         {
           id: Math.random().toString(36).substr(2, 9),
-          text: action.payload.text,
+          text: action.payload.text ,
           completed: action.payload.checked,
         },
       ];
@@ -61,7 +61,7 @@ function App() {
   };
 
   const remoteItems = (e) => {
-    console.log(e);
+    
     dispatch({
       type: "REMOVE_ITEMS",
       payload: {
