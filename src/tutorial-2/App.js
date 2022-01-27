@@ -17,14 +17,14 @@ function App() {
       ];
     }
     if (action.type === "REMOVE_ITEMS") {
-      let newState = [...state].filter(
+      let newState = state.filter(
         (item) => item.id !== action.payload.removeNumber
       );
 
       return newState;
     }
     if (action.type === "CHECKED_COMPLETED") {
-      return [...state].filter((item) => {
+      return state.filter((item) => {
         if (action.payload.numbers === item.id) {
           item.completed = !item.completed;
         }
